@@ -1,0 +1,16 @@
+import smtplib
+import getpass
+smtp_object = smtplib.SMTP('setp.gmail.com', 587)
+smtp_object.ehlo()
+smtp_object.starttls()
+password = input('What is your password: ')
+email = getpass.getpass('Email please: ')
+password = getpass.getpass('Password Please: ')
+smpt_object.login(email, password)
+from_address = email
+to_address = email
+subject = input("enter the Subject Line: ")
+message = input("enter the body of the message: ")
+msg = "Subject: "+subject+'\n'+message
+smtp_object.sendmail(from_address, to_address, msg)
+smtp_object.quit()
